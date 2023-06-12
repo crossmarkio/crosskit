@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="101.65mm" height="18.071mm" version="1.1" viewBox="0 0 101.65 18.071" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-57.606 -177.55)">
+  <g transform="translate(1051.8 865.42)" stroke="#000">
+   <circle cx="-985.2" cy="-678.84" r="8.5542" stroke-width=".963" style="font-variation-settings:'wght' 500"/>
+   <g fill="none" stroke-width=".653">
+    <circle cx="-957.09" cy="-678.84" r="8.5542" style="font-variation-settings:'wght' 500"/>
+    <circle cx="-929.28" cy="-678.84" r="8.5542" style="font-variation-settings:'wght' 500"/>
+    <circle cx="-901.47" cy="-678.84" r="8.5542" style="font-variation-settings:'wght' 500"/>
+   </g>
+  </g>
+ </g>
+</svg>

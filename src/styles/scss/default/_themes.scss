@@ -1,0 +1,97 @@
+/* .default {
+  --background: #{$color-white};
+  --tint: #{$color-light};
+  --contrast: #{$color-black};
+  --textContrast: #{$color-white};
+  --textPrimary: #{$color-purple};
+  --textSecondary: color-mod(#{$color-purple} lightness(70%));
+  --lightBlue: transparentize(#{$color-blue}, 0.06);
+  --lightOrange: transparentize(#{$color-orange}, 0.06);
+  --lightGreen: transparentize(#{$color-green}, 0.06);
+  --lightRed: transparentize(#{$color-red}, 0.06);
+  --lightGrey: transparentize(#{$color-grey}, 0.06);
+}*/
+
+.light {
+  --b1: #{$color-white};
+  --b2: #{$color-softWhite};
+  --t1: #{$color-black};
+  --t2: #{$color-white};
+  --br1: #{$border-color-lightGray};
+  --br2: #{$border-color-dark};
+  --br3: #{$border-color-transparent};
+  --g1l: #{$gradient-color-orange};
+  --g1r: #{$gradient-color-fusha};
+  --g2l: #{$gradient-color-lightRed};
+  --g2r: #{$gradient-color-red};
+  --g3t: #{$gradient-color-lightGrey};
+  --g3b: #{$color-white};
+  --g4t: #{$color-white};
+  --g4b: #{$color-white-transparent};
+  --i1: #{$icon-color-dark};
+  --s1: #{$shadow-color-light};
+  --tint: #{$tint-color-light};
+}
+
+.dark {
+  --b1: #{$color-black};
+  --b2: #{$color-dark};
+  --t1: #{$color-white};
+  --t2: #{$color-black};
+  --br1: #{$border-color-dark};
+  --br2: #{$border-color-lightGray};
+  --br3: #{$border-color-transparent};
+  --g1l: #{$gradient-color-orange};
+  --g1r: #{$gradient-color-fusha};
+  --g2l: #{$gradient-color-lightRed};
+  --g2r: #{$gradient-color-red};
+  --g3t: #{$color-lightdark};
+  --g3b: #{$color-black};
+  --g4t: #{$color-dark};
+  --g4b: #{$color-dark-transparent};
+  --i1: #{$icon-color-light};
+  --s1: #{$shadow-color-dark};
+  --tint: #{$tint-color-dark};
+}
+
+.moon {
+  --b1: #{$color-moon-dark};
+  --b2: #{$color-moon-light};
+  --t1: #{$color-white};
+  --t2: #{$color-black};
+  --br1: #{$border-color-dark};
+  --br2: #{$border-color-lightGray};
+  --br3: #{$border-color-transparent};
+  --g1l: #{$gradient-color-moon};
+  --g1r: #{$gradient-color-moonDark};
+  --g2l: #{$gradient-color-lightRed};
+  --g2r: #{$gradient-color-red};
+  --g3t: #{$color-lightdark};
+  --g3b: #{$color-black};
+  --g4t: #{$color-dark};
+  --g4b: #{$color-dark-transparent};
+  --i1: #{$icon-color-light};
+  --s1: #{$shadow-color-dark};
+  --tint: #{$tint-color-dark};
+}
+
+.sun {
+  --b1: #{$color-white};
+  --b2: #{$color-softWhite};
+  --t1: #{$color-black};
+  --t2: #{$color-white};
+  --br1: #{$border-color-lightGray};
+  --br2: #{$border-color-dark};
+  --br3: #{$border-color-transparent};
+  --g1l: #{$gradient-color-orange};
+  --g1r: #{$gradient-color-sun};
+  --g2l: #{$gradient-color-lightRed};
+  --g2r: #{$gradient-color-red};
+  --g3t: #{$gradient-color-lightGrey};
+  --g3b: #{$color-white};
+  --g4t: #{$color-white};
+  --g4b: #{$color-white-transparent};
+  --i1: #{$icon-color-dark};
+  --s1: #{$shadow-color-light};
+  --tint: #{$tint-color-light};
+}

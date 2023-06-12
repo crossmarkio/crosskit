@@ -1,0 +1,121 @@
+//===== Colors =====//
+$body-color: #1d1d24;
+$heading-color: #1f1f25;
+$border-color: #4b4b4b;
+
+$color-frost: #dadada;
+$color-charcoal: #252525;
+$color-purple: #7c3aed;
+$color-blue: #0030cf;
+$color-orange: #f8bf4c;
+$color-green: #3bdc96;
+$color-red: #ff5b5b;
+
+$color-black: #000000;
+$color-black-transparent: rgba(0, 0, 0, 0.7);
+
+$color-white: #ffffff;
+$color-white-transparent: rgba(255, 255, 255, 0.7);
+
+$color-dark: rgb(9, 9, 9);
+$color-lightdark: rgb(15, 15, 15);
+$color-dark-transparent: rgba(9, 9, 9, 0.7);
+
+$color-moon-dark: rgb(26, 28, 38);
+$color-moon-light: rgb(34, 37, 49);
+
+$color-grey: #606885;
+$color-lightGrey: rgb(209 213 219);
+$color-softWhite: rgb(249 250 251);
+$color-silver: #acb1c1;
+$color-light: #f3f6fa;
+
+$color-themeLight: #ffffff;
+$color-themeDark: #000000;
+$color-themeMoonlight: #181a21;
+$color-themeRoyal: #030b36;
+
+$color-transparent: transparent;
+
+$color-brandBithomp: #3fa3b5;
+$color-brandXrplns: #3767ce;
+$color-brandXrpscan: #004a7c;
+$color-brandPayid: #38d39f;
+$color-brandFIO: #564fc6;
+
+//===== Tint Colors =====//
+$tint-color-light: rgb(243 244 246);
+$tint-color-dark: #242424;
+
+//===== Gadient Colors =====//
+$gradient-color-orange: #ff6a00ff;
+$gradient-color-fusha: #ee0979ff;
+$gradient-color-yellow: rgb(255, 200, 0);
+$gradient-color-sun: rgb(255, 162, 0);
+$gradient-color-moon: #251b3f;
+$gradient-color-moonDark: #344d79;
+$gradient-color-lightRed: #e84646;
+$gradient-color-red: #ca0e0e;
+$gradient-color-lightGrey: rgb(243 244 246);
+
+//===== Border Colors =====//
+$border-color-lightGray: #e5e7eb;
+$border-color-dark: #2a2a2a;
+$border-color-transparent: #e5e7eb48;
+
+//===== Icon Colors =====//
+$icon-color-light: #9da2aa;
+$icon-color-dark: #1e293b;
+
+//===== Shadow Colors =====//
+$shadow-color-light: #3737373a;
+$shadow-color-dark: #1d1f22;
+
+/*===============================
+    Font Family 
+=================================*/
+$body-font: "Poppins", sans-serif;
+$heading-font: "Poppins", sans-serif;
+
+// Heading Font List
+$font-1: "Poppins", sans-serif;
+
+$fontList: $font-1;
+
+/*===============================
+    Color Variation 
+=================================*/
+$color-2: #75eef2;
+$color-3: #2f21b3;
+$color-4: #8956e2;
+$colorList: $color-2, $color-3, $color-4;
+
+//===== Line Height =====//
+/* $body-line-height: 1.714286;
+//==== Font size =====//
+$body-font-size: 14px;
+$h1: 64px;
+$h2: 54px;
+$h3: 24px;
+$h4: 20px;
+$h5: 18px;
+$h6: 16px;
+$h7: 10px; */
+
+//===== Button Colors =====//
+$button-color: #5871ff67;
+$button-diabled: #b8b8b883;
+$util-button-color: #3350f5e3;
+$util-button-diabled: #b8b8b883;
+
+// Layouts
+$smlg-device: "only screen and (max-width: 1199px)";
+$extra-device: "only screen and (min-width: 1600px) and (max-width: 1919px)";
+$laptop-device: "only screen and (min-width: 1200px) and (max-width: 1599px)";
+$xlg-layout: "only screen and (min-width: 1300px)";
+$lg-layout: "only screen and (min-width: 992px) and (max-width: 1199px)";
+$md-layout: "only screen and (min-width: 768px) and (max-width: 991px)";
+$sm-layout: "only screen and (max-width: 767px)";
+$xsm-layout: "only screen and (max-width: 500px)";
+$large-mobile: "only screen and (max-width: 575px)";
+$small-mobile: "only screen and (max-width: 479px)";
