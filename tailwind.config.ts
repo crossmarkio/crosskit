@@ -5,10 +5,11 @@ export default {
   prefix: "tw-",
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    screens: {
-      extension: "405px",
-    },
     extend: {
+      screens: {
+        extension: "405px",
+        xs: "300px",
+      },
       aspectRatio: {
         card: "1.7736",
       },
