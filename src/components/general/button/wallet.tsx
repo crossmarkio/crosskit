@@ -23,6 +23,7 @@ export const signIn = async () => {
       const resp = (await window.crossmark.sign({
         TransactionType: "SignIn",
       })) as resp;
+
       if (resp.data.isError || resp.data.isRejected) {
         reject(true);
         throw true;

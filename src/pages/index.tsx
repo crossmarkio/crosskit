@@ -62,7 +62,7 @@ const Home: NextPage = () => {
       {isError && (
         <div className="tw-flex tw-grow tw-flex-col tw-items-center tw-justify-center tw-gap-10">
           <div className="tw-px-6 tw-text-center tw-text-p16b tw-text-t1 max-lg:tw-text-p14b">
-            ITS SEEMS LIKE SOMETHING WENT WRONG ...
+            SOMETHING WENT WRONG ...
           </div>
           <a
             className="tw-flex tw-w-fit tw-items-center tw-justify-center tw-whitespace-nowrap tw-text-p12b tw-uppercase tw-leading-tight tw-text-t1 hover:tw-cursor-pointer hover:tw-underline"
