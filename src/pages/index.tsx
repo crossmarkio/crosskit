@@ -3,29 +3,32 @@ import Image1 from "src/components/general/assets/images/png/background-5.png";
 import Image from "next/image";
 import Icon from "@/components/general/icon";
 import Header from "@/components/general/header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useStoreContext } from "@/context";
+import WalletButton, { signIn } from "@/components/general/button/wallet";
+
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const Comp = WalletButton();
+
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState<undefined | string>(undefined);
+  const [address, setAddress] = useStoreContext().address;
 
-  const signIn = async () => {
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      let resp = await window.crossmark.sign({ TransactionType: "SignIn" });
-      console.log(resp);
-    } catch (e) {
-      setError(String(e));
-      setIsError(true);
-    }
+  const handleClick = async () => {
+    const a = (await signIn()) as string;
+    setAddress(a);
   };
+
+  useEffect(() => {
+    setIsError(Comp[1]);
+  }, [Comp[1]]);
 
   return (
     <div className="dark tw-flex tw-h-full tw-w-full tw-flex-col tw-items-center tw-bg-gradient3 tw-font-montserrat">
       <div className="tw-flex tw-h-2/3 tw-w-full tw-flex-col tw-border-b tw-border-br1">
-        <Header />
+        <Header setIsError={setIsError} />
         <div className="tw-relative tw-flex tw-grow tw-flex-col tw-items-center tw-justify-center">
           <Image
             src={Image1}
@@ -53,12 +56,7 @@ const Home: NextPage = () => {
           <div className="tw-px-6 tw-text-center tw-text-p16b tw-text-t1 max-lg:tw-text-p14b">
             PLEASE SIGN IN TO GET STARTED ...
           </div>
-          <button
-            className="tw-flex tw-w-fit tw-items-center tw-justify-center tw-whitespace-nowrap tw-rounded-md tw-border tw-border-br1 tw-bg-b1 tw-p-3 tw-px-4 tw-text-p12b tw-uppercase tw-leading-tight tw-text-t1"
-            onClick={signIn}
-          >
-            connect wallet
-          </button>
+          {Comp[0]()}
         </div>
       )}
       {isError && (
@@ -67,8 +65,8 @@ const Home: NextPage = () => {
             ITS SEEMS LIKE SOMETHING WENT WRONG ...
           </div>
           <a
-            className="tw-flex tw-w-fit tw-items-center tw-justify-center tw-whitespace-nowrap tw-text-p12b tw-uppercase tw-leading-tight tw-text-t1"
-            onClick={signIn}
+            className="tw-flex tw-w-fit tw-items-center tw-justify-center tw-whitespace-nowrap tw-text-p12b tw-uppercase tw-leading-tight tw-text-t1 hover:tw-cursor-pointer hover:tw-underline"
+            onClick={handleClick}
           >
             TRY AGAIN
           </a>

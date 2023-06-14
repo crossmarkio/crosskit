@@ -18,7 +18,16 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@typings/*": ["src/typings/*"],
+      "@store/*": ["src/store/*"],
+      "@styles/*": ["src/styles/*"],
+      "@common/*": ["src/common/*"],
+      "@components/*": ["src/components/*"],
+      "@extension/*": ["src/extension/*"],
+      "@icons/*": ["src/components/general/assets/icons/*"],
+      "@services/*": ["src/services/*"],
+      "@screens/*": ["src/screens/*"]
     }
   },
   "include": [
@@ -27,7 +36,8 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs"
+    "**/*.mjs",
+    "next.config.js"
   ],
   "exclude": ["node_modules"]
 }
