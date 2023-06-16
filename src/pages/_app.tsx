@@ -29,7 +29,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <StoreProvider>
       <Nav>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
         <ToastContainer />
       </Nav>
     </StoreProvider>
