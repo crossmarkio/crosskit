@@ -18,7 +18,7 @@ const nextConfig = {
   },
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   swcMinify: true,
-  reactStrictMode: true,
+  reactStrictMode: false,
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 
 import TitleSection from "@components/general/title/section";
 import { TRANSACTION_TYPES } from "ripple-binary-codec/dist";
+import Logger from "@/components/general/form/logger";
 
 const parseTypes = () => [
   ...TRANSACTION_TYPES,
@@ -59,10 +60,9 @@ const Home: NextPage = () => {
         </div>
         <div className="tw-flex tw-grow tw-gap-5 tw-overflow-hidden max-md:tw-flex-col max-md:tw-overflow-y-scroll ">
           <div className="tw-flex tw-grow tw-flex-col tw-items-end tw-gap-4">
-            <Input />
+            <Input title={"user input"} />
             <div className="tw-flex tw-w-full tw-grow tw-flex-col tw-gap-3">
-              <TitleSection title={"logger"} />
-              <div className="tw-h-full tw-min-h-[200px] tw-w-full tw-appearance-none tw-rounded-md tw-border tw-border-br1 tw-bg-b1 tw-p-2 tw-text-c10 tw-text-t1 placeholder:tw-uppercase focus:tw-border focus:tw-border-br1 focus:tw-outline-none"></div>
+              <Logger title={"logger"} />
             </div>
           </div>
           <div className="tw-flex tw-flex-col tw-gap-4">

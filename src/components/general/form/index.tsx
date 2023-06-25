@@ -9,7 +9,11 @@ interface Form {
 
 const regex = /\,(?!\s*?[\{\[\"\'\w])/g;
 
-const Input = () => {
+interface Props {
+  title: string;
+}
+
+const Input = (props: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isInput, setIsInput] = useState(false);
 
@@ -35,7 +39,7 @@ const Input = () => {
       className="tw-flex tw-w-full tw-flex-col tw-items-end tw-gap-3"
       onSubmit={handleSubmit}
     >
-      <TitleSection title={"user input"} />
+      <TitleSection title={props.title} />
       <textarea
         id="tx"
         name="tx"

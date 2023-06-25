@@ -24,6 +24,8 @@ export const signIn = async () => {
         TransactionType: "SignIn",
       })) as resp;
 
+      console.log(resp);
+
       if (resp.data.isError || resp.data.isRejected) {
         reject(true);
         throw true;
