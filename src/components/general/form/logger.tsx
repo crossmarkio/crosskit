@@ -16,7 +16,7 @@ const Logger = (props: Props) => {
 
   const handleUpdate = (e: string) => {
     if (!inputRef.current) return;
-    const formated = `[${Date.now().toString()}: ${e}`;
+    const formated = `${Date.now().toString()}: ${e}`;
     const value = inputRef.current?.value;
     if (!value) return (inputRef.current.value = formated);
     inputRef.current.value = value + "\r\n" + formated;
@@ -43,7 +43,7 @@ const Logger = (props: Props) => {
         console.log(user?.user?.user.profile);
         handleUpdate(
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          "user-change]" + "\r\n" + JSON.stringify(user?.user?.user.profile)
+          "user-change" + "\r\n" + JSON.stringify(user?.user?.user.profile)
         );
       });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -51,7 +51,7 @@ const Logger = (props: Props) => {
       //eslint-disable-next-line
       window.crossmark.on("network-change", (network: any) => {
         console.log(network);
-        handleUpdate("network-change]" + "\r\n" + JSON.stringify(network));
+        handleUpdate("network-change" + "\r\n" + JSON.stringify(network));
       });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -65,7 +65,7 @@ const Logger = (props: Props) => {
   }, []);
 
   return (
-    <form className="tw-flex tw-w-full tw-flex-col tw-items-end tw-gap-3">
+    <form className="tw-flex tw-h-full tw-w-full tw-flex-col tw-items-end tw-gap-3">
       <TitleSection title={props.title} />
       <textarea
         id="tx"
@@ -77,7 +77,7 @@ const Logger = (props: Props) => {
         required
         contentEditable="false"
         onChange={handleChange}
-        className="tw-h-fit tw-min-h-[200px] tw-w-full tw-appearance-none tw-rounded-md tw-border tw-border-br1 tw-bg-b1 tw-p-2 tw-text-c10 tw-text-t1 placeholder:tw-uppercase focus:tw-border focus:tw-border-br1 focus:tw-outline-none"
+        className="tw-h-full tw-min-h-[200px] tw-w-full tw-grow tw-appearance-none tw-rounded-md tw-border tw-border-br1 tw-bg-b1 tw-p-2 tw-text-c10 tw-text-t1 placeholder:tw-uppercase focus:tw-border focus:tw-border-br1 focus:tw-outline-none"
       />
     </form>
   );
