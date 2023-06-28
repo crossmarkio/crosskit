@@ -16,7 +16,7 @@ const Logger = (props: Props) => {
 
   const handleUpdate = (e: string) => {
     if (!inputRef.current) return;
-    const formated = `${Date.now().toString()}: ${e}`;
+    const formated = `[${Date.now().toString()}: ${e}`;
     const value = inputRef.current?.value;
     if (!value) return (inputRef.current.value = formated);
     inputRef.current.value = value + "\r\n" + formated;
@@ -31,19 +31,36 @@ const Logger = (props: Props) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       //eslint-disable-next-line
-      window.crossmark.on("ping", () => handleUpdate(JSON.stringify("ping")));
+      window.crossmark.on("ping", () => {
+        console.log("ping");
+        handleUpdate(JSON.stringify("ping"));
+      });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       //eslint-disable-next-line
-      window.crossmark.on("user-change", (user: any) =>
-        handleUpdate("user-change" + "\r\n" + JSON.stringify(user))
-      );
+      window.crossmark.on("user-change", (user: any) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        console.log(user?.user?.user.profile);
+        handleUpdate(
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          "user-change]" + "\r\n" + JSON.stringify(user?.user?.user.profile)
+        );
+      });
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       //eslint-disable-next-line
-      window.crossmark.on("network-change", (network: any) =>
-        handleUpdate("network-change" + "\r\n" + JSON.stringify(network))
-      );
+      window.crossmark.on("network-change", (network: any) => {
+        console.log(network);
+        handleUpdate("network-change]" + "\r\n" + JSON.stringify(network));
+      });
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      //eslint-disable-next-line
+      window.crossmark.on("close", () => handleUpdate(JSON.stringify("close")));
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      //eslint-disable-next-line
+      window.crossmark.on("open", () => handleUpdate(JSON.stringify("open")));
     }
   }, []);
 

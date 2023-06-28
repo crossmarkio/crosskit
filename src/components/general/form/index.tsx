@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import TitleSection from "@components/general/title/section";
+import { toast } from "react-toastify";
+
 type InputEvent = React.ChangeEvent<HTMLTextAreaElement>;
 type FormEvent = React.FormEvent<HTMLFormElement>;
 
@@ -13,6 +15,52 @@ interface Props {
   title: string;
 }
 
+interface resp {
+  createdAt: number;
+  resolvedAt: number;
+  response: {
+    id: string;
+    type: string;
+    data: { isError?: boolean; isRejected?: boolean; address?: string };
+  };
+}
+
+export const sign = async (tx: unknown) => {
+  try {
+    const promise = new Promise(async (resolve, reject) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      //eslint-disable-next-line
+      const resp = (await window.crossmark.sign(tx)) as resp;
+      console.log(resp);
+
+      if (resp.response.data.isError || resp.response.data.isRejected) {
+        reject(true);
+        throw true;
+      }
+      resolve(resp.response.data);
+    });
+
+    void toast.promise(
+      promise,
+      {
+        pending: "Awaiting Crossmark",
+        success: "Tx Complete",
+        error: "Tx Rejected",
+      },
+      {
+        position: "bottom-right",
+        autoClose: 2000,
+        theme: "dark",
+      }
+    );
+
+    return promise;
+  } catch (e) {
+    throw e;
+  }
+};
+
 const Input = (props: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isInput, setIsInput] = useState(false);
@@ -21,17 +69,13 @@ const Input = (props: Props) => {
     setIsInput(Boolean(e.target.value));
   };
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & Form;
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const txjson = JSON.parse(target.tx.value.replace(regex, ""));
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    //eslint-disable-next-line
-    window.crossmark.sign(txjson);
+    await sign(txjson);
   };
 
   return (

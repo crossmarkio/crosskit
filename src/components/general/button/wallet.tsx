@@ -7,10 +7,12 @@ import { Truncate } from "@/common/utils/string";
 import { toast } from "react-toastify";
 
 interface resp {
-  data: {
-    isError?: boolean;
-    isRejected?: boolean;
-    address?: string;
+  createdAt: number;
+  resolvedAt: number;
+  response: {
+    id: string;
+    type: string;
+    data: { isError?: boolean; isRejected?: boolean; address?: string };
   };
 }
 
@@ -24,13 +26,12 @@ export const signIn = async () => {
         TransactionType: "SignIn",
       })) as resp;
 
-      console.log(resp);
-
-      if (resp.data.isError || resp.data.isRejected) {
+      if (resp.response.data.isError || resp.response.data.isRejected) {
         reject(true);
         throw true;
       }
-      resolve(resp.data.address as string);
+      console.log(resp);
+      resolve(resp.response.data.address as string);
     });
 
     void toast.promise(
