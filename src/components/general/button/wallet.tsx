@@ -11,7 +11,7 @@ const WalletButton = () => {
 
   const handleClick = async () => {
     try {
-      const a = (await signIn()) as string;
+      const a = await signIn();
       setAddress(a);
     } catch (e) {
       setIsError(true);
