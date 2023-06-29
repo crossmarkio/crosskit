@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { useStoreContext } from "@/context";
 import WalletButton from "@/components/general/button/wallet";
 
-import { useRouter } from "next/router";
 import useSignIn from "@/components/hook/useSignIn";
 
 const Home: NextPage = () => {
