@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import TitleSection from "@components/general/title/section";
 import { toast } from "react-toastify";
+import type { Transaction } from "xrpl";
+import type { crossmark } from "@/typings/crossmark";
+import useCrossmark from "@/components/hook/useCrossmark";
 
 type InputEvent = React.ChangeEvent<HTMLTextAreaElement>;
 type FormEvent = React.FormEvent<HTMLFormElement>;
@@ -15,30 +18,15 @@ interface Props {
   title: string;
 }
 
-interface resp {
-  createdAt: number;
-  resolvedAt: number;
-  response: {
-    id: string;
-    type: string;
-    data: { isError?: boolean; isRejected?: boolean; address?: string };
-  };
-}
-
-export const sign = async (tx: unknown) => {
+export const sign = async (tx: unknown, crossmark?: crossmark) => {
   try {
     const promise = new Promise(async (resolve, reject) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      const resp = (await window.crossmark.sign(tx)) as resp;
-      console.log(resp);
-
-      if (resp.response.data.isError || resp.response.data.isRejected) {
+      const resp = await crossmark?.sign(tx as Transaction);
+      if (resp?.response?.data?.isError || resp?.response?.data?.isRejected) {
         reject(true);
         throw true;
       }
-      resolve(resp.response.data);
+      resolve(resp?.response.data);
     });
 
     void toast.promise(
@@ -64,6 +52,7 @@ export const sign = async (tx: unknown) => {
 const Input = (props: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isInput, setIsInput] = useState(false);
+  const crossmark = useCrossmark();
 
   const handleChange = (e: InputEvent) => {
     setIsInput(Boolean(e.target.value));
@@ -75,7 +64,7 @@ const Input = (props: Props) => {
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const txjson = JSON.parse(target.tx.value.replace(regex, ""));
-    await sign(txjson);
+    await sign(txjson, crossmark);
   };
 
   return (

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import TitleSection from "@components/general/title/section";
+import useCrossmark from "@/components/hook/useCrossmark";
+import { EVENTS, TYPES } from "@/typings/extension";
 type InputEvent = React.ChangeEvent<HTMLTextAreaElement>;
 
 interface Props {
@@ -9,6 +11,7 @@ interface Props {
 const Logger = (props: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isInput, setIsInput] = useState(false);
+  const crossmark = useCrossmark();
 
   const handleChange = (e: InputEvent) => {
     setIsInput(Boolean(e.target.value));
@@ -24,45 +27,25 @@ const Logger = (props: Props) => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    //eslint-disable-next-line
-    if (window.crossmark) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      window.crossmark.on("ping", () => {
-        console.log("ping");
-        handleUpdate(JSON.stringify("ping"));
-      });
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      window.crossmark.on("user-change", (user: any) => {
+    crossmark?.on(EVENTS.PING, () => {
+      handleUpdate(JSON.stringify(EVENTS.PING));
+    });
+
+    crossmark?.on(EVENTS.USER_CHANGE, (user: any) => {
+      handleUpdate(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        console.log(user?.user?.user.profile);
-        handleUpdate(
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          "user-change" + "\r\n" + JSON.stringify(user?.user?.user.profile)
-        );
-      });
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      window.crossmark.on("network-change", (network: any) => {
-        console.log(network);
-        handleUpdate("network-change" + "\r\n" + JSON.stringify(network));
-      });
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      window.crossmark.on("close", () => handleUpdate(JSON.stringify("close")));
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      window.crossmark.on("open", () => handleUpdate(JSON.stringify("open")));
-    }
-  }, []);
+        EVENTS.USER_CHANGE + "\r\n" + JSON.stringify(user?.user?.user.profile)
+      );
+    });
+    crossmark?.on(EVENTS.NETWORK_CHANGE, (network: any) => {
+      console.log(network);
+      handleUpdate(EVENTS.NETWORK_CHANGE + "\r\n" + JSON.stringify(network));
+    });
+    crossmark?.on(EVENTS.CLOSE, () =>
+      handleUpdate(JSON.stringify(EVENTS.CLOSE))
+    );
+    crossmark?.on(EVENTS.OPEN, () => handleUpdate(JSON.stringify(EVENTS.OPEN)));
+  }, [crossmark]);
 
   return (
     <form className="tw-flex tw-h-full tw-w-full tw-flex-col tw-items-end tw-gap-3">
@@ -71,7 +54,7 @@ const Logger = (props: Props) => {
         id="tx"
         name="tx"
         ref={inputRef}
-        placeholder="AWAITING EVENT FROM CROSSMARK"
+        placeholder="AWAITING EVENT FROM CROSSMARK?"
         autoFocus={false}
         autoComplete="false"
         required

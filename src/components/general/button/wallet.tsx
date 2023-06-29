@@ -1,37 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStoreContext } from "@/context";
-
 import WalletIcon from "@icons/Finance/wallet-04.svg";
 import { Truncate } from "@/common/utils/string";
 
 import { toast } from "react-toastify";
+import useCrossmark from "@/components/hook/useCrossmark";
+import type { crossmark } from "@/typings/crossmark";
 
-interface resp {
-  createdAt: number;
-  resolvedAt: number;
-  response: {
-    id: string;
-    type: string;
-    data: { isError?: boolean; isRejected?: boolean; address?: string };
-  };
-}
-
-export const signIn = async () => {
+export const signIn = async (crossmark?: crossmark) => {
+  console.log(crossmark);
   try {
     const promise = new Promise(async (resolve, reject) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      //eslint-disable-next-line
-      const resp = (await window.crossmark.sign({
+      const resp = await crossmark?.sign({
         TransactionType: "SignIn",
-      })) as resp;
+      });
 
-      if (resp.response.data.isError || resp.response.data.isRejected) {
+      if (resp?.response.data?.isError || resp?.response.data?.isRejected) {
         reject(true);
         throw true;
       }
       console.log(resp);
-      resolve(resp.response.data.address as string);
+      resolve(resp?.response.data?.address as string);
     });
 
     void toast.promise(
@@ -57,12 +46,13 @@ export const signIn = async () => {
 const WalletButton = () => {
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState<undefined | string>(undefined);
+  const crossmark = useCrossmark();
 
   const [address, setAddress] = useStoreContext().address;
 
   const handleClick = async () => {
     try {
-      const a = (await signIn()) as string;
+      const a = (await signIn(crossmark)) as string;
       setAddress(a);
     } catch (e) {
       setIsError(true);
