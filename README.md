@@ -19,7 +19,7 @@ If you have `issues / questions / feedback`, do not hesitate to create an issue,
 
 > Crossmark API is client-side only. You will NOT be able to access the methods or events found in the Crossmark API from a server-side environment.
 
-2. A sample of the sign-in process is demonstration - detecting if crossmark is installed and restricts sign-in access to Desktop-only environments
+2. A sample of the sign-in process is demonstrated - detecting if crossmark is installed and restricts sign-in access to Desktop-only environments.
 3. Events are handled and displayed in the logger dialogue. These events are important for session management.
 
 ## Session Management
