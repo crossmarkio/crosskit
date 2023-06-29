@@ -6,6 +6,7 @@ import Header from "@/components/general/header";
 import { useEffect, useState } from "react";
 import { useStoreContext } from "@/context";
 import WalletButton, { signIn } from "@/components/general/button/wallet";
+
 import Handler from "@/components/general/button/handler";
 import Input from "@/components/general/form";
 
@@ -14,6 +15,7 @@ import { useRouter } from "next/router";
 import TitleSection from "@components/general/title/section";
 import { TRANSACTION_TYPES } from "ripple-binary-codec/dist";
 import Logger from "@/components/general/form/logger";
+import useSignIn from "@/components/hook/useSignIn";
 
 const parseTypes = () => [
   ...TRANSACTION_TYPES,

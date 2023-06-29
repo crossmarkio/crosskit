@@ -4,7 +4,7 @@ import Icon from "@/components/general/assets/images/png/icon.png";
 import Svg from "@/components/general/assets/images/svg/brand/crossmark.svg";
 import Image from "next/image";
 
-import WalletButton, { signIn } from "@/components/general/button/wallet";
+import WalletButton from "@/components/general/button/wallet";
 
 interface Props {
   setIsError?: Dispatch<SetStateAction<boolean>>;

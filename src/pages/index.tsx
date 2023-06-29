@@ -5,11 +5,13 @@ import Icon from "@/components/general/icon";
 import Header from "@/components/general/header";
 import { useEffect, useState } from "react";
 import { useStoreContext } from "@/context";
-import WalletButton, { signIn } from "@/components/general/button/wallet";
+import WalletButton from "@/components/general/button/wallet";
 
 import { useRouter } from "next/router";
+import useSignIn from "@/components/hook/useSignIn";
 
 const Home: NextPage = () => {
+  const signIn = useSignIn();
   const Comp = WalletButton();
 
   const [isError, setIsError] = useState(false);
@@ -17,7 +19,7 @@ const Home: NextPage = () => {
   const [address, setAddress] = useStoreContext().address;
 
   const handleClick = async () => {
-    const a = (await signIn()) as string;
+    const a = await signIn();
     setAddress(a);
   };
 
