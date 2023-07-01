@@ -31,6 +31,7 @@ export enum EVENTS {
   OPEN = "open",
   CLOSE = "close",
   PING = "ping",
+  SIGNOUT = "signout",
 }
 
 export enum TARGETS {

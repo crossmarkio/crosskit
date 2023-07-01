@@ -44,6 +44,11 @@ const Logger = (props: Props) => {
     crossmark?.on(EVENTS.CLOSE, () =>
       handleUpdate(JSON.stringify(EVENTS.CLOSE))
     );
+
+    crossmark?.on(EVENTS.SIGNOUT, () =>
+      handleUpdate(JSON.stringify(EVENTS.SIGNOUT))
+    );
+
     crossmark?.on(EVENTS.OPEN, () => handleUpdate(JSON.stringify(EVENTS.OPEN)));
   }, [crossmark]);
 
