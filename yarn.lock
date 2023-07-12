@@ -1044,6 +1044,16 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
+"@crossmarkio/sdk@^0.1.5-beta":
+  version "0.1.5-beta"
+  resolved "https://registry.yarnpkg.com/@crossmarkio/sdk/-/sdk-0.1.5-beta.tgz#1b8fbdf27be506bc46b94be60fa5d0130fa12915"
+  integrity sha512-nvQSaq+Whqdu97U4YDOZpQNyiuKQwRhlfxO4ZlvYwPtVHk0Gv2xjpYR4vNXK2MiaTvvhi2QL9b+/c1BzjlN7xQ==
+  dependencies:
+    uuid "^9.0.0"
+    xrpl "^2.8.1"
+    xrpl-amm "file:../xrpl-amm/packages/xrpl"
+    xrpl-sidechain "file:../xrpl-sidechain/packages/xrpl"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -4708,7 +4718,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-ripple-address-codec@^4.3.0:
+ripple-address-codec@^4.2.4, ripple-address-codec@^4.2.5, ripple-address-codec@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/ripple-address-codec/-/ripple-address-codec-4.3.0.tgz#45edeb0312b4fe4607b37b7c4cff467802ad571d"
   integrity sha512-Tvd81i7hpDmNqHvkj6iYlj8Tv3I1Romw5gfjni9eacewJvGV2xe+p2y0FAw39z72qfciRMhQyHvpnviBcWVBNw==
@@ -4716,7 +4726,7 @@ ripple-address-codec@^4.3.0:
     base-x "^3.0.9"
     create-hash "^1.1.2"
 
-ripple-binary-codec@^1.6.0:
+ripple-binary-codec@^1.5.0-beta.3, ripple-binary-codec@^1.5.0-beta.4, ripple-binary-codec@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/ripple-binary-codec/-/ripple-binary-codec-1.6.0.tgz#848f93a10363a521f2a158751a873a9e89c25d15"
   integrity sha512-fa0aMSbh1VOGEHIWCF/VuIvoMoQ/1HLJoBxm+oPNPIDyZJG1uRpLYph1pcvAlDuMutHM3ZHMzWjJpe3AaiMIUA==
@@ -4728,7 +4738,7 @@ ripple-binary-codec@^1.6.0:
     decimal.js "^10.2.0"
     ripple-address-codec "^4.3.0"
 
-ripple-keypairs@^1.3.0:
+ripple-keypairs@^1.2.0, ripple-keypairs@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/ripple-keypairs/-/ripple-keypairs-1.3.0.tgz#fb28f15d0c764e36af7b25c4c782c3997abf84ad"
   integrity sha512-LzM3Up9Pwz3dYqnczzNptimN3AxtjeGbDGeiOzREzbkslKiZcJ615b/ghBN4H23SC6W1GAL95juEzzimDi4THw==
@@ -5330,6 +5340,11 @@ util@^0.12.0:
     is-typed-array "^1.1.3"
     which-typed-array "^1.1.2"
 
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
+
 watchpack@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.4.0.tgz#fa33032374962c78113f93c7f2fb4c54c9862a5d"
@@ -5359,7 +5374,19 @@ which-collection@^1.0.1:
     is-weakmap "^2.0.1"
     is-weakset "^2.0.1"
 
-which-typed-array@^1.1.2, which-typed-array@^1.1.9:
+which-typed-array@^1.1.2:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/which-typed-array/-/which-typed-array-1.1.10.tgz#74baa2789991905c2076abb317103b866c64e69e"
+  integrity sha512-uxoA5vLUfRPdjCuJ1h5LlYdmTLbYfums398v3WLkM+i/Wltl2/XyZpQWKbN++ck5L64SR/grOHqtXCUKmlZPNA==
+  dependencies:
+    available-typed-arrays "^1.0.5"
+    call-bind "^1.0.2"
+    for-each "^0.3.3"
+    gopd "^1.0.1"
+    has-tostringtag "^1.0.0"
+    is-typed-array "^1.1.10"
+
+which-typed-array@^1.1.9:
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/which-typed-array/-/which-typed-array-1.1.9.tgz#307cf898025848cf995e795e8423c7f337efbde6"
   integrity sha512-w9c4xkx6mPidwp7180ckYWfMmvxpjlZuIudNtDf4N/tTAUB8VJbX25qZoAsrtGuYNnGw3pa0AXgbGKRB8/EceA==
@@ -5399,6 +5426,32 @@ ws@^8.2.2:
   version "8.13.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.13.0.tgz#9a9fb92f93cf41512a0735c8f4dd09b8a1211cd0"
   integrity sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==
+
+"xrpl-amm@file:../xrpl-amm/packages/xrpl":
+  version "2.7.0-beta.3"
+  dependencies:
+    bignumber.js "^9.0.0"
+    bip32 "^2.0.6"
+    bip39 "^3.0.4"
+    https-proxy-agent "^5.0.0"
+    lodash "^4.17.4"
+    ripple-address-codec "^4.2.4"
+    ripple-binary-codec "^1.5.0-beta.3"
+    ripple-keypairs "^1.2.0"
+    ws "^8.2.2"
+
+"xrpl-sidechain@file:../xrpl-sidechain/packages/xrpl":
+  version "2.9.0-beta.0"
+  dependencies:
+    bignumber.js "^9.0.0"
+    bip32 "^2.0.6"
+    bip39 "^3.0.4"
+    https-proxy-agent "^5.0.0"
+    lodash "^4.17.4"
+    ripple-address-codec "^4.2.5"
+    ripple-binary-codec "^1.5.0-beta.4"
+    ripple-keypairs "^1.2.0"
+    ws "^8.2.2"
 
 xrpl@^2.8.1:
   version "2.8.1"

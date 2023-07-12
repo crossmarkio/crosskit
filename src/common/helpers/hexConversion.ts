@@ -50,21 +50,14 @@ export function fromHex(hex: string, str: string) {
   return str;
 }
 
-export function toHex(str: string, hex: string) {
-  try {
-    hex = unescape(encodeURIComponent(str))
-      .split("")
-      .map(function (v) {
-        return v.charCodeAt(0).toString(16);
-      })
-      .join("");
-  } catch (e) {
-    hex = str;
-    console.log("invalid text input: " + str);
-  }
-  console.log(hex);
-  return hex;
-}
+export const toHex = (str: string) =>
+  encodeURIComponent(str)
+    .split("")
+    .map(function (v) {
+      return v.charCodeAt(0).toString(16);
+    })
+    .join("");
+
 //main( 'testnet' , )
 
 // This is the same for all of the below, and

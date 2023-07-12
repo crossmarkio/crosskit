@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import TitleSection from "@components/general/title/section";
 import { toast } from "react-toastify";
 import type { Transaction } from "xrpl";
-import type { crossmark } from "@/typings/crossmark";
-import useCrossmark from "@/components/hook/useCrossmark";
+import sdk from "@crossmarkio/sdk";
 
 type InputEvent = React.ChangeEvent<HTMLTextAreaElement>;
 type FormEvent = React.FormEvent<HTMLFormElement>;
@@ -18,15 +17,20 @@ interface Props {
   title: string;
 }
 
-export const sign = async (tx: unknown, crossmark?: crossmark) => {
+export const sign = async (tx: unknown) => {
   try {
     const promise = new Promise(async (resolve, reject) => {
-      const resp = await crossmark?.sign(tx as Transaction);
-      if (resp?.response?.data?.isError || resp?.response?.data?.isRejected) {
+      const resp = await sdk.signAndSubmitAndWait(tx as Transaction);
+      console.log(resp);
+      if (
+        resp?.response?.data?.meta.isError ||
+        resp?.response?.data?.meta.isRejected
+      ) {
         reject(true);
         throw true;
       }
-      resolve(resp?.response.data);
+      console.log(resp.response.data);
+      resolve(resp.response.data);
     });
 
     void toast.promise(
@@ -52,7 +56,6 @@ export const sign = async (tx: unknown, crossmark?: crossmark) => {
 const Input = (props: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isInput, setIsInput] = useState(false);
-  const crossmark = useCrossmark();
 
   const handleChange = (e: InputEvent) => {
     setIsInput(Boolean(e.target.value));
@@ -64,7 +67,7 @@ const Input = (props: Props) => {
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const txjson = JSON.parse(target.tx.value.replace(regex, ""));
-    await sign(txjson, crossmark);
+    await sign(txjson);
   };
 
   return (

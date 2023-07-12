@@ -1,11 +1,11 @@
 import react, { useEffect, useState } from "react";
-import useCrossmark from "./useCrossmark";
 import { toast } from "react-toastify";
 import useMobileDetect from "./useMobileDetect";
+import sdk from "@crossmarkio/sdk";
+import { toHex } from "@/common/helpers/hexConversion";
 
 const useSignIn = () => {
   const detect = useMobileDetect();
-  const crossmark = useCrossmark();
   const [errorMsg, setErrorMsg] = useState<string>();
 
   const signIn = async () => {
@@ -14,15 +14,16 @@ const useSignIn = () => {
         if (!detect.isDesktop()) {
           return reject("Crossmark only available on desktop");
         }
-        if (!crossmark) return reject("Crossmark not found");
+        if (!sdk.mount.isMounted) return reject("Crossmark not found");
 
-        const resp = await crossmark?.sign({
-          TransactionType: "SignIn",
-        });
+        const resp = await sdk.signInAndWait(
+          toHex("this is my private message")
+        );
+        console.log(resp);
 
-        if (resp?.response.data?.isError || resp?.response.data?.isRejected)
+        if (!resp.response.data.address || resp?.response.data.meta.isRejected)
           reject("SignIn rejected");
-        resolve(resp?.response.data?.address as string);
+        resolve(resp.response.data.address);
       });
 
       void toast.promise(

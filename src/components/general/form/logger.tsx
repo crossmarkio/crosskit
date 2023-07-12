@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import TitleSection from "@components/general/title/section";
-import useCrossmark from "@/components/hook/useCrossmark";
-import { EVENTS, TYPES } from "@/typings/extension";
+import sdk from "@crossmarkio/sdk";
+import { EVENTS } from "@/typings/extension";
 type InputEvent = React.ChangeEvent<HTMLTextAreaElement>;
 
 interface Props {
@@ -11,7 +11,6 @@ interface Props {
 const Logger = (props: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [isInput, setIsInput] = useState(false);
-  const crossmark = useCrossmark();
 
   const handleChange = (e: InputEvent) => {
     setIsInput(Boolean(e.target.value));
@@ -27,30 +26,27 @@ const Logger = (props: Props) => {
   };
 
   useEffect(() => {
-    crossmark?.on(EVENTS.PING, () => {
+    sdk?.on(EVENTS.PING, () => {
       handleUpdate(JSON.stringify(EVENTS.PING));
     });
 
-    crossmark?.on(EVENTS.USER_CHANGE, (user: any) => {
+    sdk?.on(EVENTS.USER_CHANGE, (user) => {
+      console.log(user);
       handleUpdate(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        EVENTS.USER_CHANGE + "\r\n" + JSON.stringify(user?.user?.user.profile)
+        EVENTS.USER_CHANGE + "\r\n" + JSON.stringify(user)
       );
     });
-    crossmark?.on(EVENTS.NETWORK_CHANGE, (network: any) => {
+    sdk?.on(EVENTS.NETWORK_CHANGE, (network) => {
       console.log(network);
       handleUpdate(EVENTS.NETWORK_CHANGE + "\r\n" + JSON.stringify(network));
     });
-    crossmark?.on(EVENTS.CLOSE, () =>
-      handleUpdate(JSON.stringify(EVENTS.CLOSE))
-    );
+    sdk?.on(EVENTS.CLOSE, () => handleUpdate(JSON.stringify(EVENTS.CLOSE)));
 
-    crossmark?.on(EVENTS.SIGNOUT, () =>
-      handleUpdate(JSON.stringify(EVENTS.SIGNOUT))
-    );
+    sdk?.on(EVENTS.SIGNOUT, () => handleUpdate(JSON.stringify(EVENTS.SIGNOUT)));
 
-    crossmark?.on(EVENTS.OPEN, () => handleUpdate(JSON.stringify(EVENTS.OPEN)));
-  }, [crossmark]);
+    sdk?.on(EVENTS.OPEN, () => handleUpdate(JSON.stringify(EVENTS.OPEN)));
+  }, [sdk.mount.isMounted]);
 
   return (
     <form className="tw-flex tw-h-full tw-w-full tw-flex-col tw-items-end tw-gap-3">
