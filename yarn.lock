@@ -1044,10 +1044,10 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@crossmarkio/sdk@0.1.6-beta":
-  version "0.1.6-beta"
-  resolved "https://registry.yarnpkg.com/@crossmarkio/sdk/-/sdk-0.1.6-beta.tgz#2ff11909c0ba454bd471dfd8d7ce9b84fa5e5140"
-  integrity sha512-tvG3dIly6BeDRWtoWx8+unQRuznhdoAC+4dL1DU0pADmyHFzbu6DZLbtCYguL4365aH89YCTuUtNudb+gIc6xw==
+"@crossmarkio/sdk@0.1.7-beta":
+  version "0.1.7-beta"
+  resolved "https://registry.yarnpkg.com/@crossmarkio/sdk/-/sdk-0.1.7-beta.tgz#939c03f6d7feed79c628971c44161d32e122b77a"
+  integrity sha512-wX/YpPkTNNj3QN5v/xTIkkDpfLWwGjyYpsSdF0QMBOx+A9Er2eYIWBhOtW8HWBnEGKza5TcEl+u5An+l5If1Ug==
   dependencies:
     "@crossmarkio/xrpl-amm" "^2.7.0-beta.3"
     "@crossmarkio/xrpl-sidechain" "^2.9.0-beta.0"

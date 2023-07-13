@@ -1,6 +1,6 @@
 {
   "name": "crosskit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@crossmarkio/sdk": "0.1.6-beta",
+    "@crossmarkio/sdk": "0.1.7-beta",
     "@t3-oss/env-nextjs": "^0.3.1",
     "framer-motion": "^10.12.16",
     "next": "^13.4.2",

@@ -30,21 +30,14 @@ const Logger = (props: Props) => {
       handleUpdate(JSON.stringify(EVENTS.PING));
     });
 
-    sdk?.on(EVENTS.USER_CHANGE, (user) => {
-      console.log(user);
-      handleUpdate(
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        EVENTS.USER_CHANGE + "\r\n" + JSON.stringify(user)
-      );
-    });
-    sdk?.on(EVENTS.NETWORK_CHANGE, (network) => {
-      console.log(network);
-      handleUpdate(EVENTS.NETWORK_CHANGE + "\r\n" + JSON.stringify(network));
-    });
+    sdk?.on(EVENTS.USER_CHANGE, (user) =>
+      handleUpdate(EVENTS.USER_CHANGE + "\r\n" + JSON.stringify(user))
+    );
+    sdk?.on(EVENTS.NETWORK_CHANGE, (network) =>
+      handleUpdate(EVENTS.NETWORK_CHANGE + "\r\n" + JSON.stringify(network))
+    );
     sdk?.on(EVENTS.CLOSE, () => handleUpdate(JSON.stringify(EVENTS.CLOSE)));
-
     sdk?.on(EVENTS.SIGNOUT, () => handleUpdate(JSON.stringify(EVENTS.SIGNOUT)));
-
     sdk?.on(EVENTS.OPEN, () => handleUpdate(JSON.stringify(EVENTS.OPEN)));
   }, [sdk.mount.isMounted]);
 
