@@ -64,11 +64,6 @@ const getTxnTypes = publicProcedure
   .input(z.void())
   .output(getTxnsTypesOutputSchema)
   .query(() => {
-    /*     console.log(path.resolve(__dirname, "..", "..", "data/txns"));
-    let types = getFiles(path.resolve(__dirname, "..", "..", "data/txns")).map(
-      (type) => type.split(".")[0]
-    );
-    return { types }; */
     let types = getFiles(
       path.resolve(process.cwd(), "server", "data", "txns")
     ).map((type) => type.split(".")[0]);

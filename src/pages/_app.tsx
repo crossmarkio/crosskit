@@ -46,7 +46,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <StoreProvider>
-        <Script src="https://unpkg.com/@crossmarkio/sdk"></Script>
         <Nav>
           <Component {...pageProps} />
           <ToastContainer />

@@ -1,0 +1,14 @@
+{
+  "Account": "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
+  "Asset": {
+    "currency": "XRP"
+  },
+  "Asset2": {
+    "currency": "TST",
+    "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+  },
+  "Fee": "10",
+  "Flags": 0,
+  "Sequence": 9,
+  "TransactionType": "AMMDelete"
+}

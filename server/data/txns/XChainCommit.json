@@ -1,0 +1,16 @@
+{
+  "Account": "rMTi57fNy2UkUb4RcdoUeJm7gjxVQvxzUo",
+  "TransactionType": "XChainCommit",
+  "XChainBridge": {
+    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
+  },
+  "Amount": "10000",
+  "XChainClaimID": "13f"
+}

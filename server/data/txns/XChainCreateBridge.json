@@ -1,0 +1,16 @@
+{
+  "TransactionType": "XChainCreateBridge",
+  "Account": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
+  "XChainBridge": {
+    "LockingChainDoor": "rhWQzvdmhf5vFS35vtKUSUwNZHGT53qQsg",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
+  },
+  "SignatureReward": 200,
+  "MinAccountCreateAmount": 1000000
+}

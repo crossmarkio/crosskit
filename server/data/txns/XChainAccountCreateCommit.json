@@ -1,0 +1,17 @@
+{
+  "Account": "rwEqJ2UaQHe7jihxGqmx6J4xdbGiiyMaGa",
+  "Destination": "rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo",
+  "TransactionType": "XChainAccountCreateCommit",
+  "Amount": "20000000",
+  "SignatureReward": "100",
+  "XChainBridge": {
+    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "Account": "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
+  "Amount": {
+    "currency": "TST",
+    "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
+    "value": "2.5"
+  },
+  "Amount2": "30000000",
+  "Asset": {
+    "currency": "TST",
+    "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+  },
+  "Asset2": {
+    "currency": "XRP"
+  },
+  "Fee": "10",
+  "Flags": 1048576,
+  "Sequence": 7,
+  "TransactionType": "AMMDeposit"
+}

@@ -1,0 +1,17 @@
+{
+  "Account": "rahDmoXrtPdh7sUdrPjini3gcnTVYjbjjw",
+  "Amount": "10000",
+  "TransactionType": "XChainClaim",
+  "XChainClaimID": "13f",
+  "Destination": "rahDmoXrtPdh7sUdrPjini3gcnTVYjbjjw",
+  "XChainBridge": {
+    "LockingChainDoor": "rMAXACCrp3Y8PpswXcg3bKggHX76V3F8M4",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    }
+  }
+}

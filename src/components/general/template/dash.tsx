@@ -5,7 +5,7 @@ import Image1 from "@assets/images/png/background-5.png";
 
 import Header from "@components/general/header";
 import Bar from "@components/general/nav";
-import Sub from "@/components/general/nav/sub";
+import Sub from "@components/general/nav/sub";
 
 interface Props {
   children: JSX.Element | JSX.Element[] | ReactNode;
@@ -23,6 +23,12 @@ const Dash = ({ children }: Props) => {
       <div className="tw-flex tw-w-full tw-grow tw-overflow-hidden">
         <Bar />
         <Sub />
+        {/*         <Scrollbars
+          autoHide
+          autoHideTimeout={1000}
+          className="tw-h-full tw-grow tw-overflow-hidden tw-overflow-y-auto"
+        >
+          <div className="tw-z-10 tw-w-full tw-grow tw-px-12 tw-py-4"> */}
         <div className="tw-z-10 tw-w-full tw-grow tw-overflow-auto tw-overflow-x-hidden tw-px-12 tw-py-4">
           {children}
         </div>
