@@ -24,6 +24,7 @@ import {
 } from "../schema/api.schema";
 
 import fs from "fs";
+import path from "path";
 
 const getDirectories = (source: string) =>
   fs
@@ -63,7 +64,14 @@ const getTxnTypes = publicProcedure
   .input(z.void())
   .output(getTxnsTypesOutputSchema)
   .query(() => {
-    let types = getFiles("server/data/txns").map((type) => type.split(".")[0]);
+    /*     console.log(path.resolve(__dirname, "..", "..", "data/txns"));
+    let types = getFiles(path.resolve(__dirname, "..", "..", "data/txns")).map(
+      (type) => type.split(".")[0]
+    );
+    return { types }; */
+    let types = getFiles(
+      path.resolve(process.cwd(), "server", "data", "txns")
+    ).map((type) => type.split(".")[0]);
     return { types };
   });
 
@@ -74,7 +82,15 @@ const getTxnSample = publicProcedure
   .query(async ({ input }) => {
     if (!input.type) return {};
     let sample = fs
-      .readFileSync(`server/data/txns/${input.type}.json`)
+      .readFileSync(
+        path.resolve(
+          process.cwd(),
+          "server",
+          "data",
+          "txns",
+          `${input.type}.json`
+        )
+      )
       .toString();
     return { sample };
   });
