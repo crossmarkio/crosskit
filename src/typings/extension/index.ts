@@ -22,6 +22,7 @@ export enum EVENTS {
   ACCOUNTS_CHANGED = "accountsChanged",
   CHAIN_CHANGED = "chainChanged",
   CONNECT = "connect",
+  RESPONSE = "response",
   DISCONNECT = "disconnect",
   MESSAGE = "message",
   POPUP_MODE = "popup-mode",

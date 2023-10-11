@@ -8,9 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
-    "@crossmarkio/sdk": "0.1.7-beta",
+    "@crossmarkio/sdk": "file:../sdk",
     "@t3-oss/env-nextjs": "^0.3.1",
+    "@tanstack/react-query": "^4.33.0",
+    "@trpc/client": "^10.38.1",
+    "@trpc/next": "^10.38.1",
+    "@trpc/react-query": "^10.38.1",
+    "@trpc/server": "^10.38.1",
+    "axios": "^1.5.0",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.3.1",
     "framer-motion": "^10.12.16",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "next": "^13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -18,11 +28,16 @@
     "sass": "^1.63.3",
     "scss": "^0.2.4",
     "sharp": "^0.32.1",
+    "superjson": "^1.13.1",
+    "trpc-openapi": "^1.2.0",
+    "uuid": "^9.0.0",
     "xrpl": "^2.8.1",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
+    "@types/crypto-js": "^4.1.1",
     "@types/eslint": "^8.37.0",
     "@types/node": "^18.16.0",
     "@types/prettier": "^2.7.2",

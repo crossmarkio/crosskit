@@ -6,13 +6,14 @@ import useSignIn from "@/components/hook/useSignIn";
 
 const WalletButton = () => {
   const [isError, setIsError] = useState(false);
-  const [address, setAddress] = useStoreContext().address;
+  const repo = useStoreContext().repo;
+  const address = repo?.General.getAddress();
   const signIn = useSignIn();
 
   const handleClick = async () => {
     try {
       const a = await signIn();
-      setAddress(a);
+      repo?.General.updateAddress(a);
     } catch (e) {
       setIsError(true);
     }

@@ -1,19 +1,19 @@
-import chalk from 'chalk';
+import chalk from "chalk";
 
-const isDev = process.env['NODE_ENV'] === 'production';
+const isDev = process.env["NODE_ENV"] === "production";
 //const isDev = process.env['NODE_ENV'] !== 'production';
 
 export const logger = {
-  error(...args: unknown[]) {
+  error(...args: string[]) {
     if (isDev) console.log(chalk.red(...args));
   },
-  warn(...args: unknown[]) {
+  warn(...args: string[]) {
     if (isDev) console.log(chalk.yellow(...args));
   },
-  info(...args: unknown[]) {
+  info(...args: string[]) {
     if (isDev) console.log(chalk.cyan(...args));
   },
-  success(...args: unknown[]) {
+  success(...args: string[]) {
     if (isDev) console.log(chalk.green(...args));
   },
 };

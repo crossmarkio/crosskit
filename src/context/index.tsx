@@ -1,19 +1,19 @@
 import React, {
-  useState,
   createContext,
   useContext,
   useEffect,
-  ReactNode,
-  SetStateAction,
-  Dispatch,
+  type ReactNode,
 } from "react";
 
+import Base from "@store/repo/base";
+
 export type ContextType = {
-  address: [string | undefined, Dispatch<SetStateAction<string | undefined>>];
-  collapse: [boolean, Dispatch<SetStateAction<boolean>>];
+  repo: Base;
 };
 
 const StoreContext = createContext({} as ContextType);
+
+const base = new Base();
 
 interface StoreType {
   children: ReactNode;
@@ -21,8 +21,7 @@ interface StoreType {
 
 const StoreProvider: React.FC<StoreType> = (props) => {
   const store: ContextType = {
-    collapse: useState<boolean>(false),
-    address: useState<string>(),
+    repo: base,
   };
 
   useEffect(() => {

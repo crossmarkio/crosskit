@@ -1,8 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import react, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useMobileDetect from "./useMobileDetect";
 import sdk from "@crossmarkio/sdk";
 import { toHex } from "@/common/helpers/hexConversion";
+
+/* const sdk = require("@crossmarkio/sdk@0.2.5-beta"); */
 
 const useSignIn = () => {
   const detect = useMobileDetect();
@@ -14,12 +21,10 @@ const useSignIn = () => {
         if (!detect.isDesktop()) {
           return reject("Crossmark only available on desktop");
         }
-        if (!sdk.mount.isMounted) return reject("Crossmark not found");
 
         const resp = await sdk.signInAndWait(
           toHex("this is my private message")
         );
-        console.log(resp);
 
         if (!resp.response.data.address || resp?.response.data.meta.isRejected)
           reject("SignIn rejected");

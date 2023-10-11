@@ -16,6 +16,7 @@
     "jsx": "preserve",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
+    "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
@@ -27,7 +28,8 @@
       "@extension/*": ["src/extension/*"],
       "@icons/*": ["src/components/general/assets/icons/*"],
       "@services/*": ["src/services/*"],
-      "@screens/*": ["src/screens/*"]
+      "@screens/*": ["src/screens/*"],
+      "@assets/*": ["src/components/general/assets/*"]
     }
   },
   "include": [

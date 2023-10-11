@@ -4,14 +4,24 @@ import Icon from "@/components/general/assets/images/png/icon.png";
 import Svg from "@/components/general/assets/images/svg/brand/crossmark.svg";
 import Image from "next/image";
 
+import Power from "@icons/Media/power-01.svg";
+
 import WalletButton from "@/components/general/button/wallet";
+import { useStoreContext } from "@/context";
+import { useRouter } from "next/router";
 
 interface Props {
   setIsError?: Dispatch<SetStateAction<boolean>>;
 }
 
 const Header = (props: Props) => {
+  const router = useRouter();
   const [Button, isError] = WalletButton();
+  const repo = useStoreContext().repo;
+
+  const handleSignOut = () => {
+    repo.General.update({ address: undefined });
+  };
 
   useEffect(() => {
     if (props.setIsError) props.setIsError(isError);
@@ -23,7 +33,15 @@ const Header = (props: Props) => {
         <Image src={Icon} alt="" className="tw-h-7 tw-w-fit max-xs:tw-hidden" />
         <Svg className="tw-h-3 tw-w-fit max-sm:tw-hidden" />
       </div>
-      <Button />
+      <div className="tw-flex tw-items-center tw-justify-center tw-gap-3">
+        <Button />
+        {repo.General.getAddress() && (
+          <Power
+            onClick={handleSignOut}
+            className="tw-h-6 tw-w-6 tw-stroke-t1 tw-stroke-2 hover:tw-cursor-pointer"
+          />
+        )}
+      </div>
     </div>
   );
 };

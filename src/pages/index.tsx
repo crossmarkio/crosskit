@@ -8,25 +8,29 @@ import { useStoreContext } from "@/context";
 import WalletButton from "@/components/general/button/wallet";
 
 import useSignIn from "@/components/hook/useSignIn";
+import sdk, { Browser } from "@crossmarkio/sdk";
+import useClient from "@/components/hook/useClient";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const repo = useStoreContext().repo;
   const signIn = useSignIn();
   const Comp = WalletButton();
+  const isClient = useClient();
+  const router = useRouter();
 
   const [isError, setIsError] = useState(false);
-  const [error, setError] = useState<undefined | string>(undefined);
-  const [address, setAddress] = useStoreContext().address;
 
   const handleClick = async () => {
     const a = await signIn();
-    setAddress(a);
+    repo?.General.updateAddress(a);
   };
 
   useEffect(() => {
     setIsError(Comp[1]);
   }, [Comp[1]]);
 
-  return (
+  return isClient ? (
     <div className="dark tw-flex tw-h-full tw-w-full tw-flex-col tw-items-center tw-bg-gradient3 tw-font-montserrat">
       <div className="tw-flex tw-h-2/3 tw-w-full tw-flex-col tw-border-b tw-border-br1">
         <Header setIsError={setIsError} />
@@ -74,6 +78,8 @@ const Home: NextPage = () => {
         </div>
       )}
     </div>
+  ) : (
+    <></>
   );
 };
 

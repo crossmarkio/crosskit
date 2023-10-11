@@ -30,6 +30,10 @@ const Logger = (props: Props) => {
       handleUpdate(JSON.stringify(EVENTS.PING));
     });
 
+    sdk?.on(EVENTS.RESPONSE, (resp) => {
+      handleUpdate(EVENTS.RESPONSE + "\r\n" + JSON.stringify(resp));
+    });
+
     sdk?.on(EVENTS.USER_CHANGE, (user) =>
       handleUpdate(EVENTS.USER_CHANGE + "\r\n" + JSON.stringify(user))
     );
@@ -39,7 +43,7 @@ const Logger = (props: Props) => {
     sdk?.on(EVENTS.CLOSE, () => handleUpdate(JSON.stringify(EVENTS.CLOSE)));
     sdk?.on(EVENTS.SIGNOUT, () => handleUpdate(JSON.stringify(EVENTS.SIGNOUT)));
     sdk?.on(EVENTS.OPEN, () => handleUpdate(JSON.stringify(EVENTS.OPEN)));
-  }, [sdk.mount.isMounted]);
+  }, []);
 
   return (
     <form className="tw-flex tw-h-full tw-w-full tw-flex-col tw-items-end tw-gap-3">
@@ -48,13 +52,13 @@ const Logger = (props: Props) => {
         id="tx"
         name="tx"
         ref={inputRef}
-        placeholder="AWAITING EVENT FROM CROSSMARK?"
+        placeholder="AWAITING EVENT FROM CROSSMARK"
         autoFocus={false}
         autoComplete="false"
         required
         contentEditable="false"
         onChange={handleChange}
-        className="tw-h-full tw-min-h-[200px] tw-w-full tw-grow tw-appearance-none tw-rounded-md tw-border tw-border-br1 tw-bg-b1 tw-p-2 tw-text-c10 tw-text-t1 placeholder:tw-uppercase focus:tw-border focus:tw-border-br1 focus:tw-outline-none"
+        className="tw-h-fit tw-min-h-[200px] tw-w-full tw-appearance-none tw-rounded-md tw-border tw-border-br1 tw-bg-b1 tw-p-2 tw-text-p12 tw-text-t1 placeholder:tw-uppercase focus:tw-border focus:tw-border-br1 focus:tw-outline-none"
       />
     </form>
   );

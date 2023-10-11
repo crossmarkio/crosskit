@@ -1,12 +1,20 @@
 import StoreProvider from "@/context";
 import { type AppType } from "next/dist/shared/lib/utils";
 import { useEffect } from "react";
+
 import "../styles/globals.scss";
 import { useStoreContext } from "@/context";
 
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { api } from "src/lib/trpc";
+
+import { useRouter } from "next/router";
+
+import Head from "next/head";
+import Script from "next/script";
 
 interface Props {
   children: React.ReactNode;
@@ -14,26 +22,38 @@ interface Props {
 
 const Nav = ({ children }: Props) => {
   const router = useRouter();
+  const repo = useStoreContext().repo;
 
-  const [address, setAddress] = useStoreContext().address;
+  const handleUpdate = () => {
+    if (repo?.General.getAddress()) void router.push("dashboard");
+    if (!repo?.General.getAddress()) void router.push("/");
+  };
 
   useEffect(() => {
-    if (address) void router.push("home");
-    if (!address) void router.push("/");
-  }, [address]);
+    handleUpdate();
+
+    repo.General.on("generalUpdate", handleUpdate);
+    return () => {
+      repo.General.removeListener("generalUpdate", handleUpdate);
+    };
+  }, []);
 
   return <>{children}</>;
 };
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+  const queryClient = new QueryClient();
   return (
-    <StoreProvider>
-      <Nav>
-        <Component {...pageProps} />
-        <ToastContainer />
-      </Nav>
-    </StoreProvider>
+    <QueryClientProvider client={queryClient}>
+      <StoreProvider>
+        <Script src="https://unpkg.com/@crossmarkio/sdk"></Script>
+        <Nav>
+          <Component {...pageProps} />
+          <ToastContainer />
+        </Nav>
+      </StoreProvider>
+    </QueryClientProvider>
   );
 };
 
-export default MyApp;
+export default api.withTRPC(MyApp);
