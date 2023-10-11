@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@crossmarkio/sdk": "file:../sdk",
+    "@crossmarkio/sdk": "^0.3.1-beta",
     "@t3-oss/env-nextjs": "^0.3.1",
     "@tanstack/react-query": "^4.33.0",
     "@trpc/client": "^10.38.1",
