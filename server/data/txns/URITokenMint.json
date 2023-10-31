@@ -1,0 +1,13 @@
+{
+  "TransactionType": "URITokenMint",
+  "Account": "rWYkbWkCeg8dP6rXALnjgZSjjLyih5NXm",
+  "Flags": 1,
+  "URI": "697066733A2F2F4445414442454546",
+  "Digest": "697066733A2F2F4445414442454546697066733A2F2F44454144424545467878",
+  "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+  "Amount": {
+    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "currency": "USD",
+    "value": "100"
+  }
+}

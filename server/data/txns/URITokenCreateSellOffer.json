@@ -1,0 +1,11 @@
+{
+  "TransactionType": "URITokenCreateSellOffer",
+  "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+  "URITokenID": "C1AE6DDDEEC05CF2978C0BAD6FE27362498DGS691DC749DCDD3B95992978C0BA",
+  "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
+  "Amount": {
+    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "currency": "USD",
+    "value": "100"
+  }
+}

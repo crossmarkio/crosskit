@@ -1,0 +1,10 @@
+{
+  "TransactionType": "DIDSet",
+  "Account": "rsMvgKpm7cb5TMxt9XRGBXyyVWToBnDTBn",
+  "Attestation": "617474657374",
+  "DIDDocument": "646F63",
+  "Fee": "10",
+  "Flags": 2147483648,
+  "Sequence": 7,
+  "URI": "6469645F6578616D706C65"
+}

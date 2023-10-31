@@ -1,0 +1,7 @@
+{
+  "TransactionType": "DIDDelete",
+  "Account": "r91PyqgWTgED2x8dPHQX7gBktDoSJyHadi",
+  "Fee": "10",
+  "Flags": 2147483648,
+  "Sequence": 10
+}

@@ -1,0 +1,8 @@
+{
+  "TransactionType": "URITokenBurn",
+  "Account": "rWYkbWkCeg8dP6rXALnjgZSjjLyih5NXm",
+  "URI": "https://example.com/token/12345",
+  "Fee": "2000000",
+  "Sequence": 2470665,
+  "Flags": 2147483648
+}
